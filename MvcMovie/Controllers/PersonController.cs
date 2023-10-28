@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Encodings.Web;
+using MvcMovie.Models;
 
 namespace MvcMovie.Controllers
 {
@@ -9,9 +9,12 @@ namespace MvcMovie.Controllers
         {
             return View();
         }
-        public string Welcome()
+        [HttpPost]
+        public IActionResult Index(Person ps)
         {
-            return" this is Welcome action method...";
+        string strOutput = "Xin chào" + ps.PersonID + "-" + ps.FullName + "-" + ps.Address;
+        ViewBag.infoPerson = strOutput;
+        return View();
         }
     }
 }
