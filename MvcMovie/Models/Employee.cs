@@ -1,4 +1,4 @@
-namespace MvcMovie.Models.Person;
+namespace MvcMovie.Models;
 public class Employee : Person
 {
     public string PersonID { get; set; }    

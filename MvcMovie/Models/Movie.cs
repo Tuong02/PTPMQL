@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-namespace MvcMovie.Models;
+namespace MvcMovie;
 public class Movie 
 {
     public int Id { get; set; }
