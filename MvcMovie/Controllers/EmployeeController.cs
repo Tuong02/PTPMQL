@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Data;
 using MvcMovie.Models;
+using MvcMovie.Models.Process;
 
 namespace MvcMovie.Controllers
 {
@@ -28,7 +29,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Employee/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Employee == null)
             {
@@ -36,7 +37,7 @@ namespace MvcMovie.Controllers
             }
 
             var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.PersonId == id);
+                .FirstOrDefaultAsync(m => m.EmpID == id);
             if (employee == null)
             {
                 return NotFound();
@@ -56,7 +57,7 @@ namespace MvcMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PersonId,EmployeeID,FullName,Age,Address")] Employee employee)
+        public async Task<IActionResult> Create([Bind("EmpID,EmpName")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +69,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Employee/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Employee == null)
             {
@@ -88,9 +89,9 @@ namespace MvcMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("PersonId,EmployeeID,FullName,Age,Address")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("EmpID,EmpName")] Employee employee)
         {
-            if (id != employee.PersonId)
+            if (id != employee.EmpID)
             {
                 return NotFound();
             }
@@ -104,7 +105,7 @@ namespace MvcMovie.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.PersonId))
+                    if (!EmployeeExists(employee.EmpID))
                     {
                         return NotFound();
                     }
@@ -119,7 +120,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Employee/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Employee == null)
             {
@@ -127,7 +128,7 @@ namespace MvcMovie.Controllers
             }
 
             var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.PersonId == id);
+                .FirstOrDefaultAsync(m => m.EmpID == id);
             if (employee == null)
             {
                 return NotFound();
@@ -139,7 +140,7 @@ namespace MvcMovie.Controllers
         // POST: Employee/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Employee == null)
             {
@@ -154,10 +155,9 @@ namespace MvcMovie.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-        private bool EmployeeExists(string id)
+        private bool EmployeeExists(int id)
         {
-          return (_context.Employee?.Any(e => e.PersonId == id)).GetValueOrDefault();
+          return (_context.Employee?.Any(e => e.EmpID == id)).GetValueOrDefault();
         }
     }
 }

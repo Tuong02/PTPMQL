@@ -6,10 +6,12 @@ namespace MvcMovie.Models
     [Table("Persons")]
     public class Person
     {
-         [Key]
-        public string PersonId { get; set; }
-        public string FullName { get; set; }
-        public string Address { get; set; } 
+        [Key]
+        [Required(ErrorMessage = "PersonId khong duoc de trong")]
+        public  string PersonID { get; set; }
+        [Required(ErrorMessage ="Full name is required")]
+        public  string FullName { get; set; }
+        [DataType(DataType.EmailAddress)]
+        public  string Address { get; set; }
     }
 }
-//NguyenHuyTuong2021050718

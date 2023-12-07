@@ -1,10 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace MvcMovie.Models
 {
-    public class Employee : Person
-    { 
-        public string PersonId { get; set; }
-        public string EmployeeID { get; set; }
-        public string FullName { get; set; }
-        public int Age { get; set; }
+    public class Employee
+    {
+        [Key]
+        public int EmpID { get; set; }
+        public string? EmpName { get; set; }
     }
 }
