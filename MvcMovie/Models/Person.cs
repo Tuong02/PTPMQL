@@ -8,10 +8,10 @@ namespace MvcMovie.Models
     {
         [Key]
         [Required(ErrorMessage = "PersonId khong duoc de trong")]
-        public  string PersonID { get; set; }
+        public string PersonID { get; set; }
         [Required(ErrorMessage ="Full name is required")]
-        public  string FullName { get; set; }
+        public string FullName { get; set; }
         [DataType(DataType.EmailAddress)]
-        public  string Address { get; set; }
+        public string Address { get; set; }
     }
 }

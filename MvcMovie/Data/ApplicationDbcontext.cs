@@ -11,8 +11,8 @@ namespace MvcMovie.Data
             
         }
         public DbSet<Person> Person { get; set; }
-        public DbSet<Student> Student { get; set; }
         public DbSet<Employee> Employee { get; set; }
+        public DbSet<Student> Student { get; set; }
     }
 }
 //NguyenHuyTuong2021050718

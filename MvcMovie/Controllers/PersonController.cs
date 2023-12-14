@@ -192,7 +192,7 @@ namespace MvcMovie.Controllers
                 var psList = _context.Person.ToList();
                 excelWorksheet.Cells["A2"].LoadFromCollection(psList);
                 var stream = new MemoryStream(excelPackage.GetAsByteArray());
-                return File(stream,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",fileName);
+                return File(stream,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
             }
         }
 

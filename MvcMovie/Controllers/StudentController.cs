@@ -22,8 +22,8 @@ namespace MvcMovie.Controllers
         // GET: Student
         public async Task<IActionResult> Index()
         {
-            return _context.Student != null ?
-                        View(await _context.Student.ToListAsync()) :
+              return _context.Student != null ? 
+                          View(await _context.Student.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Student'  is null.");
         }
 

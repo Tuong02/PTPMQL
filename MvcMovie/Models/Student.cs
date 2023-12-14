@@ -17,3 +17,4 @@ namespace MvcMovie.Models
         public bool IsActive { get; set; }
     }
 }
+//nguyenHuyTuong2021050718

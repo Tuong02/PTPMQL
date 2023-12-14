@@ -11,8 +11,8 @@ using MvcMovie.Data;
 namespace MvcMovie.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("202311134922_Create_Table_Employee")]
-    partial class Create_Table_Employee
+    [Migration("20231214105548_Create_table_Person")]
+    partial class Create_table_Person
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,6 @@ namespace MvcMovie.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("EmpName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("EmpID");
@@ -46,7 +45,6 @@ namespace MvcMovie.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(150)
                         .HasColumnType("TEXT");
 
                     b.HasKey("PersonID");
